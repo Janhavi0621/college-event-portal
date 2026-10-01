@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/dashboard.css"><link rel="stylesheet" href="css/responsive.css"><title>Create account · CampusEvents</title></head><body>
+<div class="auth">
+  <aside class="auth-side">
+    <a class="logo" href="index.html"><span class="logo-mark"></span>CampusEvents</a>
+    <div><h2>Join your campus event community.</h2>
+      <ul><li>Register for events in two taps</li><li>Get a digital pass with a unique ID</li><li>Never miss a fest or workshop</li></ul></div>
+    <p class="muted" style="margin:0">Student accounts only. Organizer accounts are created by the college.</p>
+  </aside>
+  <main class="auth-main"><div class="auth-card wide">
+    <a class="logo" href="index.html" style="margin-bottom:1.6rem"><span class="logo-mark"></span>CampusEvents</a>
+    <h1>Create your student account</h1><p class="muted">It takes under a minute.</p>
+    <form id="registerForm" novalidate>
+      <div class="form-error" role="alert" hidden></div>
+      <div class="form-grid">
+        <div class="field full"><label for="name">Full name</label><input id="name" name="name" autocomplete="name" placeholder="Aarav Sharma"><p class="field-error"></p></div>
+        <div class="field"><label for="studentId">Student ID</label><input id="studentId" name="studentId" placeholder="STU2026001"><p class="field-error"></p></div>
+        <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="9876543210"><p class="field-error"></p></div>
+        <div class="field full"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@college.edu"><p class="field-error"></p></div>
+        <div class="field full"><label for="department">College / Department</label><input id="department" name="department" placeholder="Computer Science"><p class="field-error"></p></div>
+        <div class="field"><label for="password">Password</label>
+          <div class="pw-wrap"><input id="password" name="password" type="password" autocomplete="new-password" placeholder="At least 8 characters"><button type="button" class="pw-toggle" aria-label="Show or hide password">Show</button></div><p class="field-error"></p></div>
+        <div class="field"><label for="confirmPassword">Confirm password</label>
+          <div class="pw-wrap"><input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" placeholder="Repeat your password"><button type="button" class="pw-toggle" aria-label="Show or hide password">Show</button></div><p class="field-error"></p></div>
+      </div>
+      <button class="btn btn-primary btn-block btn-lg" type="submit">Create Account</button>
+    </form>
+    <p class="auth-alt">Already have an account? <a href="login.html">Log in</a></p>
+  </div></main>
+</div>
+<script src="js/config.js"></script><script src="js/common.js"></script><script src="js/auth.js"></script>
+</body></html>

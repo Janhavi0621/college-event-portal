@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/dashboard.css"><link rel="stylesheet" href="css/responsive.css">
+<title>CampusEvents: Discover, register, experience</title>
+<meta name="description" content="Discover and register for college technical and cultural events.">
+</head><body>
+<header class="nav">
+  <a class="logo" href="index.html"><span class="logo-mark"></span>CampusEvents</a>
+  <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+  <nav class="nav-links" id="navLinks">
+    <a href="index.html" class="active">Home</a>
+    <a href="student-dashboard.html">Events</a>
+    <a href="#about">About</a>
+    <a href="login.html" data-nav="login">Login</a>
+    <a href="register.html" data-nav="register" class="btn btn-sm btn-primary">Register</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero"><div class="container hero-grid">
+  <div>
+    <h1><span>Discover.</span><span>Register.</span><span>Experience.</span></h1>
+    <p class="lead">Your one place to discover and register for the latest college technical and cultural events.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary btn-lg" href="student-dashboard.html">Explore Events</a>
+      <a class="btn btn-ghost btn-lg" href="register.html">Register Now</a>
+    </div>
+    <div class="hero-stats"><div><b>6</b>event categories</div><div><b>Live</b>seat counts</div><div><b>1 tap</b>to get your pass</div></div>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <div class="tk tk-back"></div>
+    <div class="tk tk-front">
+      <div class="tk-head"><span>CAMPUS EVENTS</span><span class="status status-open" id="tkStatus">Open</span></div>
+      <h3 id="tkTitle">CodeFest 2026</h3>
+      <div class="tk-meta"><span id="tkVenue">Main Auditorium</span><span id="tkTime">10:00 AM</span></div>
+      <div class="tk-bar"><i id="tkBar" style="width:72%"></i></div>
+      <p class="tk-seats"><b id="tkSeats">42</b> seats left</p>
+      <div class="tk-foot"><span>REG-2026-8F42K9</span>
+        <svg viewBox="0 0 7 7" fill="#0B1026"><rect width="3" height="3"/><rect x="4" width="3" height="3"/><rect y="4" width="3" height="3"/><rect x="4" y="4" width="1" height="1"/><rect x="6" y="5" width="1" height="2"/><rect x="5" y="6" width="1" height="1"/></svg></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="section" id="categories"><div class="container">
+  <div class="section-head"><h2>Find events that match your interests</h2><p>Pick a category to see what is coming up on campus.</p></div>
+  <div class="cat-grid" id="catGrid"></div>
+</div></section>
+
+<section class="section"><div class="container">
+  <div class="section-head"><h2>Why CampusEvents?</h2><p>Everything you need to go from "that looks fun" to "I'm in" without queues or paperwork.</p></div>
+  <div class="why-grid">
+    <div class="why-card"><div class="cat-ico">⚡</div><h3>Easy Registration</h3><p>Create an account once, then register for any event in a couple of taps.</p></div>
+    <div class="why-card"><div class="cat-ico" style="--c:34,211,238">💺</div><h3>Real-Time Seat Availability</h3><p>See exactly how many seats are left. The count updates the moment someone registers.</p></div>
+    <div class="why-card"><div class="cat-ico" style="--c:167,139,255">🎟️</div><h3>Digital Entry Pass</h3><p>Get a pass with a unique Registration ID that you can show on your phone or print.</p></div>
+    <div class="why-card"><div class="cat-ico" style="--c:45,212,160">🔒</div><h3>Secure Registration</h3><p>Passwords are hashed, sessions are protected, and nobody can take your seat twice.</p></div>
+  </div>
+</div></section>
+
+<section class="section" id="about"><div class="container about">
+  <div><div class="section-head" style="margin:0"><h2>Built for students and organizers</h2></div>
+    <p>Students browse upcoming events, register while seats last and keep every pass in one place. Organizers create events, watch registrations come in and see exactly who is attending.</p>
+    <a class="btn btn-ghost" href="login.html">Organizer login</a></div>
+  <div class="cta-band" style="flex-direction:column;align-items:flex-start"><h2>Ready for your next event?</h2><a class="btn btn-lg" href="register.html">Create your free account</a></div>
+</div></section>
+</main>
+
+<footer class="footer"><div class="container"><span>CampusEvents, the college event portal</span><span>Made for campus fests, workshops and everything in between</span></div></footer>
+
+<script src="js/config.js"></script><script src="js/common.js"></script>
+<script>
+  // Category cards
+  document.getElementById('catGrid').innerHTML = CE.CATEGORIES.map(function (c) {
+    var rgb = {Technical:'96,140,255',Cultural:'255,128,190',Workshop:'245,184,75',Sports:'45,212,160',Competition:'167,139,255',Seminar:'34,211,238'}[c[0]];
+    return '<a class="cat-card" style="--c:' + rgb + '" href="student-dashboard.html?category=' + c[0] + '"><span class="cat-ico">' + c[1] + '</span><div><h3>' + c[0] + '</h3><p>' + c[2] + '</p></div></a>';
+  }).join('');
+  // Fill the hero ticket with the next real event (falls back to the sample above if the API is unreachable).
+  CE.api('/events').then(function (d) {
+    var e = d.events.filter(function (x) { return x.status === 'Open'; })[0];
+    if (!e) return;
+    document.getElementById('tkTitle').textContent = e.title;
+    document.getElementById('tkVenue').textContent = e.venue;
+    document.getElementById('tkTime').textContent = CE.fmtDate(e.date) + ', ' + CE.fmtTime(e.time);
+    document.getElementById('tkSeats').textContent = e.remainingSeats;
+    document.getElementById('tkBar').style.width = Math.round(e.registered / e.maxSeats * 100) + '%';
+  }).catch(function () {});
+</script>
+</body></html>

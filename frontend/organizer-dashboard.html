@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/dashboard.css"><link rel="stylesheet" href="css/responsive.css"><title>Organizer dashboard · CampusEvents</title></head><body>
+<div class="org">
+  <aside class="side no-print">
+    <a class="logo" href="#dashboard"><span class="logo-mark"></span>CampusEvents</a>
+    <nav aria-label="Organizer navigation">
+      <a href="#dashboard">📊 Dashboard</a>
+      <a href="#create">➕ Create Event</a>
+      <a href="#events">📅 My Events</a>
+      <a href="#registrations">👥 Registrations</a>
+      <button type="button" id="logoutBtn">↩ Logout</button>
+    </nav>
+    <div class="side-foot"><span class="avatar" id="orgAvatar" aria-hidden="true">A</span><div class="meta-text"><b id="orgName"></b><span class="muted">Organizer</span></div></div>
+  </aside>
+  <main class="org-main" id="view" aria-live="polite"></main>
+</div>
+<script src="js/config.js"></script><script src="js/common.js"></script><script src="js/organizer.js"></script>
+</body></html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/dashboard.css"><link rel="stylesheet" href="css/responsive.css"><title>Explore events · CampusEvents</title></head><body>
+<div id="appbar" data-active="dash"></div>
+<main class="page"><div class="container">
+  <div class="page-head"><div><h1 id="welcome">Welcome</h1><p>Find an event, register, and get your pass.</p></div></div>
+  <section class="stats" aria-label="Your numbers">
+    <div class="stat" style="--c:96,140,255"><span class="stat-ico">📅</span><div><b id="statAvailable">0</b><span>Available Events</span></div></div>
+    <div class="stat" style="--c:167,139,255"><span class="stat-ico">✅</span><div><b id="statMine">0</b><span>My Registrations</span></div></div>
+    <div class="stat" style="--c:34,211,238"><span class="stat-ico">⏳</span><div><b id="statUpcoming">0</b><span>Upcoming Events</span></div></div>
+    <div class="stat" style="--c:45,212,160"><span class="stat-ico">🎟️</span><div><b id="statPasses">0</b><span>Passes</span></div></div>
+  </section>
+  <h2 style="font-size:1.5rem">Explore Upcoming Events</h2>
+  <div class="toolbar">
+    <div class="search-wrap"><input id="search" type="search" placeholder="Search events by name" aria-label="Search events"></div>
+    <select id="categoryFilter" aria-label="Filter by category"></select>
+    <input id="dateFilter" type="date" aria-label="Filter by date">
+    <select id="availFilter" aria-label="Filter by availability"><option value="">All availability</option><option value="available">Seats available</option><option value="full">Sold out</option></select>
+    <button class="btn btn-ghost" id="clearFilters" hidden>Clear</button>
+  </div>
+  <p class="result-count" id="resultCount" aria-live="polite"></p>
+  <div class="grid" id="eventGrid"></div>
+</div></main>
+<script src="js/config.js"></script><script src="js/common.js"></script><script src="js/events.js"></script><script src="js/registrations.js"></script><script src="js/student.js"></script>
+</body></html>
